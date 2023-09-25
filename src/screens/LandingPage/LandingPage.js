@@ -11,7 +11,7 @@ function LandingPage() {
         <Row>
           <div className="intro-text">
             <div>
-              <h1 className="title">Welcome to Note Zipper GG</h1>
+              <h1 className="title">Welcome to Note Zipper </h1>
               <p className="subtitle">One Safe place for all your notes.</p>
             </div>
             <div className="buttonContainer">
