@@ -43,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "deploy_context": "production",
+  "exp": 1623876755,
+  "iss": "netlify",
+  "netlify_id": "1be0f471-6532-45ff-b1b1-f9c66ea24dc1",
+  "site_url": "https://heroic-buttercream-1a9a4f.netlify.app/"
 }
