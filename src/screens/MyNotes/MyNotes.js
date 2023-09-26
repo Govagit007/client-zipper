@@ -70,71 +70,73 @@ const MyNotes = ({ search }) => {
       {error && <ErrorMessage variant="danger"> {error} </ErrorMessage>}
 
       <Accordion defaultActiveKey="0" flush>
-        {notes
-          ?.filter((fnotes) =>
-            fnotes.title.toLowerCase().includes(search.toLowerCase())
-          )
-          .map((note) => (
-            <Accordion.Item eventKey={note._id} key={note._id}>
-              <Card style={{ margin: 10 }}>
-                <Card.Header style={{ display: "flex" }}>
-                  <span
-                    style={{
-                      color: "black",
-                      textDecoration: "none",
-                      flex: 1,
-                      cursor: "pointer",
-                      alignSelf: "center",
-                      fontSize: 18,
-                    }}
-                  >
-                    <Accordion.Header
+        {Array.isArray(notes) &&
+          notes
+            ?.reverse()
+            .filter((fnotes) =>
+              fnotes.title.toLowerCase().includes(search.toLowerCase())
+            )
+            .map((note) => (
+              <Accordion.Item eventKey={note._id} key={note._id}>
+                <Card style={{ margin: 10 }}>
+                  <Card.Header style={{ display: "flex" }}>
+                    <span
                       style={{
-                        display: "flex",
-                        opacity: 0.6,
+                        color: "black",
                         textDecoration: "none",
+                        flex: 1,
+                        cursor: "pointer",
+                        alignSelf: "center",
+                        fontSize: 18,
                       }}
-                      as="text"
-                      variant="link"
                     >
-                      {note.title}
-                    </Accordion.Header>
-                  </span>
+                      <Accordion.Header
+                        style={{
+                          display: "flex",
+                          opacity: 0.6,
+                          textDecoration: "none",
+                        }}
+                        as="text"
+                        variant="link"
+                      >
+                        {note.title}
+                      </Accordion.Header>
+                    </span>
 
-                  <div>
-                    <Button href={`/note/${note._id}`}>Edit</Button>
-                    <Button
-                      variant="danger"
-                      className="mx-2"
-                      onClick={() => deleteHandler(note._id)}
-                    >
-                      Delete
-                    </Button>
-                  </div>
-                </Card.Header>
+                    <div>
+                      <Button href={`/note/${note._id}`}>Edit</Button>
+                      <Button
+                        variant="danger"
+                        className="mx-2"
+                        onClick={() => deleteHandler(note._id)}
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  </Card.Header>
 
-                <Accordion.Body>
-                  <Card.Body>
-                    <h4>
-                      <Badge variant="success">
-                        Category - {note.category}
-                      </Badge>
-                    </h4>
-                    <blockquote className="blockquote mb-0">
-                      <p>{note.content}</p>
-                      {/* <ReactMarkdown>{note.content}</ReactMarkdown> */}
-                      <footer className="blockquote-footer">
-                        Created on{" "}
-                        <cite title="Source Title">
-                          {note.createdAt.substring(0, 10)}
-                        </cite>
-                      </footer>
-                    </blockquote>
-                  </Card.Body>
-                </Accordion.Body>
-              </Card>
-            </Accordion.Item>
-          ))}
+                  <Accordion.Body>
+                    <Card.Body>
+                      <h4>
+                        <Badge variant="success">
+                          Category - {note.category}
+                        </Badge>
+                      </h4>
+                      <blockquote className="blockquote mb-0">
+                        <p>{note.content}</p>
+                        {/* <ReactMarkdown>{note.content}</ReactMarkdown> */}
+                        <footer className="blockquote-footer">
+                          Created on{" "}
+                          <cite title="Source Title">
+                            {note.createdAt.substring(0, 10)}
+                          </cite>
+                        </footer>
+                      </blockquote>
+                    </Card.Body>
+                  </Accordion.Body>
+                </Card>
+              </Accordion.Item>
+            ))}
       </Accordion>
     </MainScreen>
   );
