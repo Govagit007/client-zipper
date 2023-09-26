@@ -3,3 +3,4 @@
   from = "/api/*"
   to = "https://notezipper-server.onrender.com/"
   status = 200
+  force = true
