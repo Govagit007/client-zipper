@@ -71,8 +71,7 @@ const MyNotes = ({ search }) => {
 
       <Accordion defaultActiveKey="0" flush>
         {notes
-          ?.reverse()
-          .filter((fnotes) =>
+          ?.filter((fnotes) =>
             fnotes.title.toLowerCase().includes(search.toLowerCase())
           )
           .map((note) => (
